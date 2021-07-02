@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b9f1b78d-a0fb-4379-8a51-979342eeb880",
+		"_postman_id": "077c3d38-1e70-422a-af88-85ac37b8dbd2",
 		"name": "Trello boards CRUD",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,8 +13,9 @@
 					"script": {
 						"exec": [
 							"var response = JSON.parse(responseBody);\r",
-							"pm.environment.set(\"board_id\", response.id);\r",
-							"pm.environment.set(\"board_name\", response.name);\r",
+							"\r",
+							"pm.variables.set(\"board_id\", response.id);\r",
+							"pm.variables.set(\"board_name\", response.name);\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -145,7 +146,7 @@
 						"exec": [
 							"var response = JSON.parse(responseBody);\r",
 							"var newName = response.name;\r",
-							"pm.environment.set(\"new_board_name\", newName);\r",
+							"pm.variables.set(\"new_board_name\", newName);\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -226,7 +227,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Board name has been updated\", function (){\r",
-							"    pm.expect(response.name).to.equal(pm.environment.get(\"new_board_name\"));\r",
+							"    pm.expect(response.name).to.equal(pm.variables.get(\"new_board_name\"));\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
